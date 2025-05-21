@@ -1,0 +1,22 @@
+services:
+    laf-ai-postgres-test-tc:
+      container_name: laf_ai_postgres_test_tc
+      image: ghcr.io/tensorchord/pgvecto-rs:pg17-v0.4.0
+      # restart: always
+      environment:
+        - POSTGRES_PASSWORD=password
+      volumes:
+        - ${DOCKER_VOLUME_DIRECTORY:-.}/volumes/postgres:/var/lib/postgresql/data
+      ports:
+      - "5435:5432"
+    
+    laf-ai-postgres-test-vc:
+      container_name: laf_ai_postgres_test_vc
+      image: ghcr.io/tensorchord/vchord-postgres:pg17-v0.3.0
+      # restart: always
+      environment:
+        - POSTGRES_PASSWORD=password
+      volumes:
+        - ${DOCKER_VOLUME_DIRECTORY:-.}/volumes/postgres:/var/lib/postgresql/data
+      ports:
+      - "5436:5432"
